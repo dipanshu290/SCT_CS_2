@@ -1,4 +1,4 @@
-const CACHE_NAME = "glitchcrypt-v3";
+const CACHE_NAME = "glitchcrypt-v1";
 const ASSETS = [
   "index.html",
   "style.css",

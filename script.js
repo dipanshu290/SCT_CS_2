@@ -41,17 +41,23 @@ window.onload = () => {
 
 const keySlider = document.getElementById("keySlider");
 const keyValue = document.getElementById("keyValue");
-keySlider.oninput = () => (keyValue.textContent = keySlider.value);
 
-document.getElementById("imageInput").onchange = (e) =>
-  loadImage(e.target.files[0]);
+keySlider.oninput = () => {
+  keyValue.textContent = keySlider.value;
+};
+
+const imageInput = document.getElementById("imageInput");
+imageInput.onchange = (e) => {
+  const file = e.target.files[0];
+  if (file) loadImage(file);
+};
 
 document.body.ondragover = (e) => e.preventDefault();
+
 document.body.ondrop = (e) => {
   e.preventDefault();
-  if (e.dataTransfer.files.length) {
-    loadImage(e.dataTransfer.files[0]);
-  }
+  const droppedFile = e.dataTransfer?.files?.[0];
+  if (droppedFile) loadImage(droppedFile);
 };
 
 function loadImage(file) {
