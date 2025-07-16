@@ -1,11 +1,42 @@
 let originalImageData, currentImageData;
 
 window.onload = () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("app").style.display = "block";
-    switchTheme("auto");
-  }, 2200);
+  let percent = 0;
+  const fill = document.getElementById("progressFill");
+  const bootText = document.getElementById("bootText");
+
+  const bootPhrases = [
+    "🚀 Initializing Encryption Matrix...",
+    "🧠 Calibrating XOR Channels...",
+    "💾 Loading Canvas Processing Unit...",
+    "🔐 Spinning Up GlitchCrypt Core...",
+    "✨ Ready to Deploy Cyber Payload!",
+  ];
+
+  let phraseIndex = 0;
+
+  const loader = setInterval(() => {
+    percent += 2;
+    fill.style.width = percent + "%";
+
+    if (percent % 16 === 0 && phraseIndex < bootPhrases.length) {
+      bootText.textContent = bootPhrases[phraseIndex++];
+    }
+
+    if (percent % 8 === 0) {
+      document.body.style.background =
+        percent % 16 === 0
+          ? "linear-gradient(145deg, #0f1117, #1c2331)"
+          : "linear-gradient(145deg, #1c2331, #0f1117)";
+    }
+
+    if (percent >= 100) {
+      clearInterval(loader);
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("app").style.display = "block";
+      switchTheme("auto");
+    }
+  }, 50);
 };
 
 const keySlider = document.getElementById("keySlider");
@@ -127,25 +158,6 @@ function exportLog() {
   log("📄 Log exported");
 }
 
-function generateQR() {
-  const ctx = document.getElementById("qrCanvas").getContext("2d");
-  ctx.clearRect(0, 0, 150, 150);
-  ctx.fillStyle = "#111";
-  ctx.fillRect(0, 0, 150, 150);
-  const hash = document
-    .getElementById("canvasEncrypted")
-    .toDataURL()
-    .slice(50, 200);
-  [...hash].forEach((c, i) => {
-    const v = c.charCodeAt(0);
-    const x = (i * 7) % 150;
-    const y = (i * 3 + v) % 150;
-    ctx.fillStyle = `hsl(${(v * 7) % 360}, 70%, 60%)`;
-    ctx.fillRect(x, y, 2, 2);
-  });
-  log("🔗 QR code generated");
-}
-
 function switchTheme(selected) {
   const root = document.documentElement;
   let t =
@@ -154,6 +166,7 @@ function switchTheme(selected) {
         ? "dark"
         : "cyber"
       : selected;
+
   if (t === "dark") {
     root.style.setProperty("--bg-dark", "#0f1117");
     root.style.setProperty("--accent-cyber", "#3ea8ff");
@@ -167,6 +180,7 @@ function switchTheme(selected) {
     root.style.setProperty("--accent-cyber", "#ff47cd");
     root.style.setProperty("--text-light", "#f0d8ff");
   }
+
   log(`🎨 Theme set to ${t}`);
 }
 

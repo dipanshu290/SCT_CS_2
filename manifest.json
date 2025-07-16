@@ -6,7 +6,7 @@
   "orientation": "portrait",
   "background_color": "#0f1117",
   "theme_color": "#3ea8ff",
-  "description": "Cyber-style image encryption with QR, animation and sound",
+  "description": "Encrypted image lab with sci-fi interface, sound FX and PWA mode",
   "icons": [
     {
       "src": "icon-192.png",

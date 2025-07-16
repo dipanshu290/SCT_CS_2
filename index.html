@@ -9,8 +9,11 @@
   </head>
   <body>
     <div id="loader">
-      <h1>🚀 GlitchCrypt Booting Up...</h1>
-      <div id="progressBar"></div>
+      <h1 id="bootText">🚀 Initializing Encryption Matrix...</h1>
+
+      <div id="progressBar">
+        <div id="progressFill"></div>
+      </div>
     </div>
 
     <main id="app" style="display: none">
@@ -48,11 +51,6 @@
       <button onclick="decryptImage()">Decrypt</button>
       <button onclick="downloadEncrypted()">Download</button>
       <button onclick="exportLog()">Export Log</button>
-      <button onclick="generateQR()">Generate QR</button>
-
-      <div id="qrWrap">
-        <canvas id="qrCanvas"></canvas>
-      </div>
 
       <pre id="log"></pre>
     </main>
