@@ -2,46 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GlitchCrypt 2.0</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlitchCrypt 3.0</title>
     <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>🧠 GlitchCrypt Control Panel</h2>
-
-    <div id="themeSwitch">
-      <label>🎨 Theme:</label>
-      <select onchange="switchTheme(this.value)">
-        <option value="dark">Dark</option>
-        <option value="cyber">Cyber Blue</option>
-        <option value="nebula">Nebula Pulse</option>
-      </select>
+    <div id="loader">
+      <h1>🚀 GlitchCrypt Booting Up...</h1>
+      <div id="progressBar"></div>
     </div>
 
-    <div id="canvasContainer">
-      <div>
-        <h3>🖼️ Original</h3>
-        <canvas id="canvasOriginal"></canvas>
+    <main id="app" style="display: none">
+      <h2>🧠 GlitchCrypt Control Panel</h2>
+
+      <div id="themeSwitch">
+        <label>Theme:</label>
+        <select onchange="switchTheme(this.value)">
+          <option value="auto">Auto</option>
+          <option value="dark">Dark</option>
+          <option value="cyber">Cyber Blue</option>
+          <option value="nebula">Nebula Pulse</option>
+        </select>
       </div>
-      <div>
-        <h3>🔐 Encrypted</h3>
-        <canvas id="canvasEncrypted"></canvas>
+
+      <div id="sliderWrap">
+        <label>Encryption Strength:</label>
+        <input type="range" id="keySlider" min="1" max="100" value="42" />
+        <span id="keyValue">42</span>
       </div>
-    </div>
 
-    <input type="file" id="imageInput" accept="image/*" />
-    <input type="number" id="keyInput" placeholder="Enter key" />
+      <div id="canvasContainer">
+        <div>
+          <h3>Original</h3>
+          <canvas id="canvasOriginal"></canvas>
+        </div>
+        <div>
+          <h3>Encrypted</h3>
+          <canvas id="canvasEncrypted"></canvas>
+        </div>
+      </div>
 
-    <br />
-    <button onclick="threatScan()">Encrypt</button>
-    <button onclick="decryptImage()">Decrypt</button>
-    <button onclick="downloadEncrypted()">Download</button>
+      <input type="file" id="imageInput" accept="image/*" />
+      <button onclick="threatScan()">Encrypt</button>
+      <button onclick="decryptImage()">Decrypt</button>
+      <button onclick="downloadEncrypted()">Download</button>
+      <button onclick="exportLog()">Export Log</button>
+      <button onclick="generateQR()">Generate QR</button>
 
-    <pre id="log"></pre>
+      <div id="qrWrap">
+        <canvas id="qrCanvas"></canvas>
+      </div>
 
-    <footer>
-      <p>Secure images activated. Satellite shield protocol online. 🛰️</p>
-    </footer>
+      <pre id="log"></pre>
+    </main>
 
     <script src="script.js"></script>
   </body>

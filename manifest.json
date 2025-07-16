@@ -1,12 +1,12 @@
 {
-  "name": "GlitchCrypt 2.0",
+  "name": "GlitchCrypt 3.0",
   "short_name": "GlitchCrypt",
   "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0f1117",
   "theme_color": "#3ea8ff",
-  "description": "Cyber-style image encryption",
+  "description": "Cyber-style image encryption with QR, animation and sound",
   "icons": [
     {
       "src": "icon-192.png",
