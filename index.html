@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GlitchCrypt 2.0</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <h2>🧠 GlitchCrypt Control Panel</h2>
+
+    <div id="themeSwitch">
+      <label>🎨 Theme:</label>
+      <select onchange="switchTheme(this.value)">
+        <option value="dark">Dark</option>
+        <option value="cyber">Cyber Blue</option>
+        <option value="nebula">Nebula Pulse</option>
+      </select>
+    </div>
+
+    <div id="canvasContainer">
+      <div>
+        <h3>🖼️ Original</h3>
+        <canvas id="canvasOriginal"></canvas>
+      </div>
+      <div>
+        <h3>🔐 Encrypted</h3>
+        <canvas id="canvasEncrypted"></canvas>
+      </div>
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" />
+    <input type="number" id="keyInput" placeholder="Enter key" />
+
+    <br />
+    <button onclick="threatScan()">Encrypt</button>
+    <button onclick="decryptImage()">Decrypt</button>
+    <button onclick="downloadEncrypted()">Download</button>
+
+    <pre id="log"></pre>
+
+    <footer>
+      <p>Secure images activated. Satellite shield protocol online. 🛰️</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
